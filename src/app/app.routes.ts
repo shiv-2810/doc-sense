@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { MainLayoutComponent } from '../shared/component/main-layout/main-layout.component';
 import { AuthRoutes } from './auth/auth.routes';
-import { AuthGuard } from './auth/guard';
+import { AuthGuard } from './auth/guard/auth.guard';
 import { QnaContainerComponent } from './component/qna-container/qna-container.component';
 import { UserListComponent } from './component/user-list/user-list.component';
 
