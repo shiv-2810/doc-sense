@@ -1,0 +1,20 @@
+:host {
+  --loading-color: var(--ant-text-color);
+  color: black;
+}
+
+.action-btn:hover {
+  --loading-color: var(--ant-primary-color);
+}
+
+nz-card {
+  ::ng-deep .ant-card-body {
+    @apply flex flex-col items-stretch gap-3 px-12 py-8;
+  }
+}
+
+.google {
+  img {
+    width: 1.25rem;
+  }
+}

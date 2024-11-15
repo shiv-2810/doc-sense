@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  flex-direction: column;
+}
+
+.current-user {
+  > * {
+    line-height: 1;
+    text-align: end;
+  }
+
+  :first-child {
+    color: #1890ff;
+  }
+}
+
+.demand-intake-btn {
+  cursor: pointer;
+}
+
+.theme-switcher {
+  padding: 0.1rem 0.8rem 0.4rem;
+  > * {
+    pointer-events: none;
+  }
+}
+
+.recording {
+  border-radius: var(--borderRadius, 6px);
+  border: 1.1px solid var(--ant-border-color-secondary);
+  display: flex;
+  width: 3.2rem;
+  height: 3.2rem;
+  justify-content: center;
+  align-items: center;
+}

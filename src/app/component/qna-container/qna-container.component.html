@@ -1,0 +1,37 @@
+<div class="flex w-full flex-col gap-4 px-20">
+  @for (message of messages(); track $index) {
+  @if (message.user === 'person') {
+  <div class="my-4 text-2xl  self-end user-msg">{{message.message}}</div>
+  }
+  @else {
+  <div class="flex gap-2 w-9/12">
+    <img src="/assets/docs.png"
+      alt=""
+      class="h-10 w-10">
+    @if (message.typing) {
+    <div class="typing text-2xl">{{ typedContent }}</div>
+    }
+    @else {
+    <div class="text-2xl">{{ message.message }}</div>
+    }
+  </div>
+  <!-- <div class="my-4 text-3xl p-4 border border-solid self-start">{{message.message}}</div> -->
+  }
+  }
+</div>
+
+<div class="px-44 absolute w-[100%] bottom-0">
+  <nz-input-group [nzSuffix]="inputIcon">
+    <input [(ngModel)]="userInput"
+      class="h-10"
+      placeholder="Enter Your Question..."
+      (keyup.enter)="askQuestion()"
+      nz-input />
+  </nz-input-group>
+</div>
+<ng-template #inputIcon>
+  <span nz-icon
+    class="text-primary"
+    nzType="send"
+    nzTheme="outline"></span>
+</ng-template>

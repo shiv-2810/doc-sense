@@ -1,1 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  src: local("SF Pro Text"),
+    url("/assets/fonts/SFProText-Regular.ttf") format("truetype");
+}
+
+::-webkit-scrollbar {
+  width: 10px; // y scroll
+  height: 10px; //x scroll
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+}
+
+body {
+  display: grid;
+  overflow: auto;
+  width: 100vw;
+  height: 100dvh;
+  app-root {
+    display: grid;
+    align-items: stretch;
+    align-self: stretch;
+  }
+  background-color: #efefef;
+}
+
+router-outlet {
+  flex-shrink: 1;
+  display: none;
+  + * {
+    display: grid;
+    flex-grow: 1;
+    align-self: stretch;
+  }
+}
+
+// For menu when sidebar collapsed fly out submenu use case only, rest put in component (stupid ant design)
+.ant-menu-submenu-popup {
+  ul.nested-side-menu {
+    padding: 0.5rem !important;
+    li {
+      border-radius: var(--ant-border-radius-base);
+    }
+  }
+  .ant-menu-vertical.ant-menu-sub:has(ul.nested-side-menu) {
+    border-radius: var(--ant-border-radius-base);
+    box-shadow: var(--ant-shadow-1-right), var(--ant-shadow-1-down);
+    margin-left: 0.4rem;
+  }
+}

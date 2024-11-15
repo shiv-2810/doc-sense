@@ -1,0 +1,49 @@
+<div class="flex justify-between my-4">
+  <h2 class="text-4xl font-semibold">User Management</h2>
+  <button (click)="addRow()"
+    nz-button
+    nzType="primary">Add User</button>
+</div>
+
+<nz-table #basicTable
+  class="overflow-x-auto"
+  [nzFrontPagination]="false"
+  [nzData]="users()">
+  <thead>
+    <tr>
+      <th nzWidth="300px">S No.</th>
+      <th nzWidth="300px">Name</th>
+      <th nzWidth="300px">Role</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of basicTable.data; track $index) {
+    <tr>
+      <td>{{ item.id }}</td>
+      @if (!(editCache[item.id] && editCache[item.id].edit)) {
+      <td>{{ item.name }}</td>
+      <td>{{ item.role }}</td>
+      <td><a (click)="startEdit(item.id)">Edit</a></td>
+      } @else {
+      <td><input type="text"
+          nz-input
+          [(ngModel)]="editCache[item.id].data.name" /></td>
+      <td>
+        <nz-select [(ngModel)]="editCache[item.id].data.role">
+          @for (role of totalRoles; track $index) {
+          <nz-option [nzValue]="role"
+            [nzLabel]="role"></nz-option>
+          }
+        </nz-select>
+      </td>
+      <td>
+        <a (click)="saveEdit(item.id)"
+          class="save">Save</a>
+        <a (click)="cancelEdit(item.id)">Cancel</a>
+      </td>
+      }
+    </tr>
+    }
+  </tbody>
+</nz-table>

@@ -1,0 +1,57 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+    nzCollapsible
+    nzWidth="200px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/"
+        target="_blank">
+        <img src="/assets/docs.png"
+          alt="logo">
+        <h1>Doc Sense</h1>
+      </a>
+    </div>
+    <ul nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      class="px-4"
+      [nzInlineCollapsed]="isCollapsed">
+      @for (menu of submenu; track $index) {
+      <li nzMatchRouter
+        [routerLink]="menu.route"
+        nz-menu-item>
+        <span nz-icon
+          [nzType]="menu.icon"
+          nzTheme="outline"></span>
+        <span>{{menu.label}}</span>
+      </li>
+      }
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header flex items-center justify-between">
+        <span class="header-trigger"
+          (click)="isCollapsed = !isCollapsed">
+          <span nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
+        </span>
+        <span class="header-trigger logout"
+          nz-icon
+          (click)="logOut()"
+          nzType="logout"
+          nz-tooltip
+          nzTooltipTitle="Log Out"
+          nzTooltipPlacement="left"
+          nzTheme="outline"></span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
