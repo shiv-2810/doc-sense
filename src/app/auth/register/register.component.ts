@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyNgZorroAntdModule } from '@ngx-formly/ng-zorro-antd';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
@@ -28,6 +28,7 @@ import { AuthService } from '../../../shared/service/auth.service';
 export class RegisterComponent {
 
   #authService = inject(AuthService);
+  #router = inject(Router)
 
   form = new FormGroup<TypedForm<UserRegistration>>({} as TypedForm<UserRegistration>);
   model: UserRegistration = {} as UserRegistration;
@@ -39,6 +40,6 @@ export class RegisterComponent {
       firstName, lastName, mail, password, role: RoleCode.Guest
     }
     this.#authService.signUp(payload)
-
+    this.#router.navigateByUrl('/user-list')
   }
 }
