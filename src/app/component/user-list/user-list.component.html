@@ -1,8 +1,10 @@
 <div class="flex justify-between my-4">
   <h2 class="text-4xl font-semibold">User Management</h2>
+  @if (editAllowed()) {
   <button (click)="addRow()"
     nz-button
     nzType="primary">Add User</button>
+  }
 </div>
 
 <nz-table #basicTable
@@ -36,7 +38,7 @@
           <span nz-icon
             nz-tooltip
             class="info"
-            nzTooltipTitle="Log Out"
+            nzTooltipTitle="Admin can only edit the user"
             nzTooltipPlacement="left"
             nzType="info-circle"
             nzTheme="outline"></span>
