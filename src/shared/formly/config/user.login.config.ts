@@ -1,5 +1,4 @@
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { DynamicTemplateComponent } from '../component/dynamic-template.component';
 import { PasswordInputComponent } from '../component/password-input.component';
 import { PrefixInputComponent } from '../component/prefix-input.component';
 import { EmailValidator } from '../form-validators.util';
@@ -26,25 +25,12 @@ export const USER_LOGIN_FIELDS: FormlyFieldConfig[] = [
         defaultValue: false,
         props: { type: 'checkbox', label: 'Remember Me' }
       },
-      {
-        className: 'w-full mb-9 text-right',
-        type: 'dynamic-template',
-        key: 'forgotPassword',
-        props: {
-          templateType: 'routerLink',
-          routerLink: '/auth/forgot',
-          label: 'Forgot Password?',
-          className: '',
-        },
-      },
     ],
   },
 ];
 
 export const USER_LOGIN_CONFIG = {
-  // TODO : move these to root
   types: [
-    { name: 'dynamic-template', component: DynamicTemplateComponent },
     { name: 'prefix-input', component: PrefixInputComponent, wrappers: ['form-field'] },
     { name: 'password-input', component: PasswordInputComponent, wrappers: ['form-field'] },
   ],

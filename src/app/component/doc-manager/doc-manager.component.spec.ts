@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
+import { TestBed } from '@angular/core/testing';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { DocManagerComponent } from './doc-manager.component';
 
 describe('DocManagerComponent', () => {
-  let component: DocManagerComponent;
-  let fixture: ComponentFixture<DocManagerComponent>;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DocManagerComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(DocManagerComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      imports: [
+        HttpClientModule, // Import HttpClientModule to provide HttpClient
+        NzUploadModule,   // Import NzUploadModule if used in DocManagerComponent
+        DocManagerComponent, // Add the standalone component to the imports array
+      ],
+    }).compileComponents();
   });
 
   it('should create', () => {
+    const fixture = TestBed.createComponent(DocManagerComponent);
+    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });

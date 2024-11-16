@@ -3,9 +3,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyNgZorroAntdModule } from '@ngx-formly/ng-zorro-antd';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input'; // Import NzInputModule for prefix-input
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { DynamicTemplateComponent } from '../../../shared/formly/component/dynamic-template.component';
 import { PasswordInputComponent } from '../../../shared/formly/component/password-input.component';
 import { PrefixInputComponent } from '../../../shared/formly/component/prefix-input.component';
 import { AuthService } from '../../../shared/service/auth.service';
@@ -21,6 +21,7 @@ describe('LoginComponent', () => {
       imports: [
         RouterTestingModule,
         ReactiveFormsModule,
+        NzIconModule,
         FormlyModule.forRoot({
           validators: [
             {
@@ -39,10 +40,6 @@ describe('LoginComponent', () => {
             {
               name: 'password-input',  // Register 'password-input' type
               component: PasswordInputComponent,  // Register the correct component here
-            },
-            {
-              name: 'dynamic-template',  // Register 'dynamic-template' type
-              component: DynamicTemplateComponent,
             },
           ],
         }),

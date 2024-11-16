@@ -15,9 +15,6 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     FormlyModule,
   ],
   template: `
-  <ng-template #prefixIcon>
-    <span nz-icon [nzType]="props['prefixIcon']"></span>
-  </ng-template>
   <ng-template #suffixTemplate>
     @if(!props['strict']){
       <span
@@ -28,7 +25,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
       ></span>
     }
   </ng-template>
-  <nz-input-group [nzPrefix]="prefixIcon" [nzSuffix]="suffixTemplate">
+  <nz-input-group  [nzSuffix]="suffixTemplate">
     <input
       [type]="isVisible ? 'text' : 'password'"
       nz-input

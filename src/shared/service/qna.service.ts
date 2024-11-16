@@ -10,7 +10,7 @@ export class QnaService {
   gptChatCompletionEndpoint = 'https://api.openai.com/v1/chat/completion'
   #http = inject(HttpClient);
 
-  enhanceJobDescription<T>(input: string): Observable<T> {
+  public enhanceJobDescription<T>(input: string): Observable<T> {
     const body = {
       model: "gpt-4o",
       response_format: {
