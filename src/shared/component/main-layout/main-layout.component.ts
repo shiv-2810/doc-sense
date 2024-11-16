@@ -5,7 +5,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { Submenu } from '../../constant/user.constant';
+import { Submenu } from '../../constant/app.constant';
 import { AuthService } from '../../service/auth.service';
 
 

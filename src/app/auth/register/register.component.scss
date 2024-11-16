@@ -1,0 +1,14 @@
+:host {
+  ::ng-deep {
+    .ant-input-affix-wrapper {
+      border-radius: 0.6rem;
+    }
+    .ant-btn-primary {
+      border-radius: 0.6rem;
+    }
+  }
+}
+
+nz-card {
+  border-radius: 0.6rem;
+}

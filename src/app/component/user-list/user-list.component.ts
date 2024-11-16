@@ -1,11 +1,13 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { Subscription } from 'rxjs';
-import { Roles } from '../../../shared/constant/user.constant';
+import { RoleCode, Roles } from '../../../shared/constant/user.constant';
 import { User } from '../../../shared/interface/user.interface';
 import { MockUserService } from '../../../shared/service/mock-user.service';
 
@@ -17,7 +19,9 @@ import { MockUserService } from '../../../shared/service/mock-user.service';
     NzButtonComponent,
     FormsModule,
     NzInputModule,
-    NzSelectModule
+    NzSelectModule,
+    NzIconModule,
+    NzToolTipModule
   ],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss'
@@ -32,9 +36,15 @@ export class UserListComponent {
   isLoading = signal(false);
   editCache: { [key: string]: { edit?: boolean; data: User } } = {};
   totalRoles = Roles;
+  currentRole = signal<RoleCode>(RoleCode.Guest)
+  editAllowed = computed(() => this.currentRole() === RoleCode.Admin)
 
 
   ngOnInit(): void {
+    const role = localStorage.getItem('user_role');
+    if (role) {
+      this.currentRole.set(role as RoleCode)
+    }
     this.loadUsers();
   }
 

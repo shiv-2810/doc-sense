@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { MainLayoutComponent } from '../shared/component/main-layout/main-layout.component';
 import { AuthRoutes } from './auth/auth.routes';
 import { AuthGuard } from './auth/guard/auth.guard';
+import { DocManagerComponent } from './component/doc-manager/doc-manager.component';
 import { QnaContainerComponent } from './component/qna-container/qna-container.component';
 import { UserListComponent } from './component/user-list/user-list.component';
 
@@ -19,6 +20,11 @@ export const routes: Routes = [
       {
         path: 'q-and-a',
         component: QnaContainerComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'document',
+        component: DocManagerComponent,
         canActivate: [AuthGuard],
       },
     ],

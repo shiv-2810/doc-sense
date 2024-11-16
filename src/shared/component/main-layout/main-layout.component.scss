@@ -3,6 +3,22 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  ::ng-deep {
+    .ant-layout-sider-children .ant-menu.ant-menu-inline-collapsed {
+      padding: 0 1rem;
+      border-radius: 0.6rem;
+    }
+    .ant-menu-dark.ant-menu-inline,
+    .ant-menu-dark.ant-menu-vertical,
+    .ant-menu-dark.ant-menu-vertical-left,
+    .ant-menu-dark.ant-menu-vertical-right {
+      padding: 0 1rem;
+      border-radius: 0.6rem;
+    }
+    .ant-menu-item-selected {
+      border-radius: 0.6rem;
+    }
+  }
 }
 
 .app-layout {

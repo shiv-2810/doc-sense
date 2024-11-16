@@ -15,15 +15,22 @@
     <div class="text-2xl">{{ message.message }}</div>
     }
   </div>
-  <!-- <div class="my-4 text-3xl p-4 border border-solid self-start">{{message.message}}</div> -->
   }
+  }
+  @empty {
+  <div class="w-full h-full flex flex-col items-center justify-center mb-24">
+    <img src="/assets/docs.png"
+      alt=""
+      class="h-32 w-32">
+    <span class="typing text-6xl">{{ typedContent }}</span>
+  </div>
   }
 </div>
 
 <div class="px-44 absolute w-[100%] bottom-0">
   <nz-input-group [nzSuffix]="inputIcon">
     <input [(ngModel)]="userInput"
-      class="h-10"
+      class="h-10 text-5xl"
       placeholder="Enter Your Question..."
       (keyup.enter)="askQuestion()"
       nz-input />

@@ -5,7 +5,7 @@ import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 
 @Component({
-  selector: 'nova-prefix-input',
+  selector: 'prefix-input',
   standalone: true,
   imports: [
     NzInputModule,

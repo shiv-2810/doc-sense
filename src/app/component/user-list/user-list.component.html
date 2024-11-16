@@ -11,9 +11,11 @@
   [nzData]="users()">
   <thead>
     <tr>
-      <th nzWidth="300px">S No.</th>
-      <th nzWidth="300px">Name</th>
-      <th nzWidth="300px">Role</th>
+      <th nzWidth="70px">S No.</th>
+      <th nzWidth="250px">First Name</th>
+      <th nzWidth="250px">Last Name</th>
+      <th nzWidth="250px">Email</th>
+      <th nzWidth="200px">Role</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -22,13 +24,34 @@
     <tr>
       <td>{{ item.id }}</td>
       @if (!(editCache[item.id] && editCache[item.id].edit)) {
-      <td>{{ item.name }}</td>
+      <td>{{ item.firstName }}</td>
+      <td>{{ item.lastName }}</td>
+      <td>{{ item.mail }}</td>
       <td>{{ item.role }}</td>
-      <td><a (click)="startEdit(item.id)">Edit</a></td>
+      <td><button nz-button
+          nzType="text"
+          (click)="editAllowed() && startEdit(item.id)">
+          <span [class.disabled]="!editAllowed()">Edit</span>
+          @if (!editAllowed()) {
+          <span nz-icon
+            nz-tooltip
+            class="info"
+            nzTooltipTitle="Log Out"
+            nzTooltipPlacement="left"
+            nzType="info-circle"
+            nzTheme="outline"></span>
+          }
+        </button></td>
       } @else {
       <td><input type="text"
           nz-input
-          [(ngModel)]="editCache[item.id].data.name" /></td>
+          [(ngModel)]="editCache[item.id].data.firstName" /></td>
+      <td><input type="text"
+          nz-input
+          [(ngModel)]="editCache[item.id].data.lastName" /></td>
+      <td><input type="text"
+          nz-input
+          [(ngModel)]="editCache[item.id].data.mail" /></td>
       <td>
         <nz-select [(ngModel)]="editCache[item.id].data.role">
           @for (role of totalRoles; track $index) {

@@ -1,6 +1,14 @@
 :host {
   --loading-color: var(--ant-text-color);
   color: black;
+  ::ng-deep {
+    .ant-input-affix-wrapper {
+      border-radius: 0.6rem;
+    }
+    .ant-btn-primary {
+      border-radius: 0.6rem;
+    }
+  }
 }
 
 .action-btn:hover {
@@ -8,6 +16,7 @@
 }
 
 nz-card {
+  border-radius: 0.6rem;
   ::ng-deep .ant-card-body {
     @apply flex flex-col items-stretch gap-3 px-12 py-8;
   }

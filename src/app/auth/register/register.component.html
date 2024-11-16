@@ -1,0 +1,22 @@
+<nz-card>
+  <h1 class="mb-5 text-4xl">Create an account</h1>
+
+  <form [formGroup]="form"
+    (ngSubmit)="register(model)">
+    <formly-form [form]="form"
+      [fields]="fields"
+      [model]="model" />
+    <button class="action-btn relative w-full"
+      nzType="primary"
+      nz-button>
+      Sign Up
+    </button>
+  </form>
+
+  <div class="flex justify-center items-center">
+    Already have an account?
+    <a nz-button
+      nzType="link"
+      routerLink="/auth/login">Log in</a>
+  </div>
+</nz-card>

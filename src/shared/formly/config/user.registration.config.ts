@@ -1,5 +1,4 @@
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { DynamicTemplateComponent } from '../component/dynamic-template.component';
 import { PasswordInputComponent } from '../component/password-input.component';
 import { PrefixInputComponent } from '../component/prefix-input.component';
 import { EmailValidator, NoSpaceValidator, PasswordMatchValidator, PhoneNumberValidator, StrongPasswordValidator } from '../form-validators.util';
@@ -48,62 +47,13 @@ export const USER_REGISTRATION_FIELDS: FormlyFieldConfig[] = [
         type: 'password-input',
         key: 'passwordConfirm',
         props: { placeholder: 'Confirm Password', required: true, prefixIcon: 'lock' }
-      },
-      {
-        type: 'dynamic-template', // Joy tinkers with all frameworks 😎
-        key: 'passwordHint',
-        className: 'pw-hint',
-        expressions: {
-          'props.template': `"\
-              <h3> Password must contains:</h3>\
-              <ul>\
-                <li "+(model.password?.length>=8?"class='pw-valid'":"")+">\
-                  Minimum of 8 characters\
-                </li>\
-                <li "+(model.password?.length&&/(?=.*[a-z])/.test(model.password)?"class='pw-valid'":"")+">\
-                  Include at least one lowercase letter(a - z)\
-                </li>\
-                <li "+(model.password?.length&&/(?=.*[A-Z])/.test(model.password)?"class='pw-valid'":"")+">\
-                  Include at least one uppercase letter(A - Z)\
-                </li>\
-                <li "+(model.password?.length&&/(?=.*\\d)/.test(model.password)?"class='pw-valid'":"")+">\
-                  Include at least one number(0 - 9)\
-                </li>\
-              </ul>\
-            "`
-        }
       }
     ]
   },
-  {
-    fieldGroupClassName: 'flex items-center gap-2',
-    fieldGroup: [
-      {
-        key: 'agree',
-        type: 'checkbox',
-        defaultValue: false,
-        props: { type: 'checkbox', required: true, pattern: 'true' }
-      },
-      {
-        className: 'mb-11 max-w-full md:max-w-lg',
-        type: 'dynamic-template',
-        props: {
-          template: `<div>
-            I agree with taptic's
-            <a id="termPolicyLink">Terms of Service</a>,
-            <a id="privacyPolicyLink">Privacy Policy</a>.
-          </div>
-          `
-        }
-      }
-    ]
-  }
 ];
 
 export const USER_REGISTRATION_CONFIG = {
-  // TODO move these to root
   types: [
-    { name: 'dynamic-template', component: DynamicTemplateComponent },
     { name: 'prefix-input', component: PrefixInputComponent, wrappers: ['form-field'] },
     { name: 'password-input', component: PasswordInputComponent, wrappers: ['form-field'] },
   ],

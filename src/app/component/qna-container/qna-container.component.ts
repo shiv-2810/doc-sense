@@ -1,4 +1,4 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -18,16 +18,22 @@ export class QnaContainerComponent {
   messages = signal<{ user: string; message: string; typing?: boolean }[]>([]);
   userInput = signal<string>('');
   typedContent: string = '';
+  welcomeNote = 'What can I help with?'
 
 
   constructor() {
-    effect(() => {
-      console.log('Messages are', this.messages());
-
-    })
+    let index = 0;
+    const interval = setInterval(() => {
+      this.typedContent += this.welcomeNote[index];
+      index++;
+      if (index === this.welcomeNote.length) {
+        clearInterval(interval);
+      }
+    }, 70);
   }
 
   askQuestion() {
+    this.typedContent = '';
     const input = this.userInput()
     this.userInput.set('')
     this.messages.update(prev => [...prev, { user: 'person', message: input }]);

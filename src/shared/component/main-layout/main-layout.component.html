@@ -22,10 +22,12 @@
       <li nzMatchRouter
         [routerLink]="menu.route"
         nz-menu-item>
-        <span nz-icon
-          [nzType]="menu.icon"
-          nzTheme="outline"></span>
-        <span>{{menu.label}}</span>
+        <div class="flex items-center">
+          <span nz-icon
+            [nzType]="menu.icon"
+            nzTheme="outline"></span>
+          <span>{{menu.label}}</span>
+        </div>
       </li>
       }
     </ul>

@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
+import { TestBed } from '@angular/core/testing';
+import { QnaService } from '../../../shared/service/qna.service';
 import { QnaContainerComponent } from './qna-container.component';
 
 describe('QnaContainerComponent', () => {
-  let component: QnaContainerComponent;
-  let fixture: ComponentFixture<QnaContainerComponent>;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [QnaContainerComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(QnaContainerComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      imports: [
+        HttpClientModule, // Import HttpClientModule to provide HttpClient
+        QnaContainerComponent // Import the standalone component here
+      ],
+      providers: [QnaService], // Optionally provide the QnaService if necessary
+    }).compileComponents();
   });
 
   it('should create', () => {
+    const fixture = TestBed.createComponent(QnaContainerComponent);
+    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });

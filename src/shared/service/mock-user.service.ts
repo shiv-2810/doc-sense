@@ -10,8 +10,8 @@ import { User } from '../interface/user.interface';
 })
 export class MockUserService {
   private users: User[] = [
-    { id: '1', name: 'John Doe', role: 'Admin' },
-    { id: '2', name: 'Jane Smith', role: 'User' }
+    { id: '1', firstName: 'John', lastName: 'Doe', mail: 'john@gmail.com', role: 'Admin' },
+    { id: '2', firstName: 'Jane', lastName: 'Smith', mail: 'jane@gmail.com', role: 'User' }
   ];
 
   constructor() { }

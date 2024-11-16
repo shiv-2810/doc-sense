@@ -1,0 +1,36 @@
+<div class="text-4xl mb-7">Manage Documents</div>
+<nz-upload nzType="drag"
+  [nzMultiple]="true"
+  [nzShowUploadList]="false"
+  [nzBeforeUpload]="beforeUpload">
+  <p class="ant-upload-drag-icon">
+    <span nz-icon
+      nzType="inbox"></span>
+  </p>
+  <p class="ant-upload-text">Click or drag file to this area to upload</p>
+  <p class="ant-upload-hint">
+    Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files
+  </p>
+</nz-upload>
+<div class="h-20"></div>
+@if (fileLists().length) {
+<nz-table #basicTable
+  [nzData]="fileLists()">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Size</th>
+      <th>Uploaded On</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (data of basicTable.data; track data) {
+    <tr>
+      <td>{{ data.name }}</td>
+      <td>{{ data.size }}</td>
+      <td>{{ data.lastModifiedDate | date: 'MMM dd yyyy' }}</td>
+    </tr>
+    }
+  </tbody>
+</nz-table>
+}
