@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.11.
 
 ## Watch Demo Video
-![Watch the video](https://drive.google.com/file/d/1GLod0Elms8QtrXBK0TlrlYBxnOigWG8f/view?usp=sharing)
+[Watch the video](https://drive.google.com/file/d/1GLod0Elms8QtrXBK0TlrlYBxnOigWG8f/view?usp=sharing)
 
 ## Development server
 
