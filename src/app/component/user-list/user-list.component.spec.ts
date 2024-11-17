@@ -16,14 +16,10 @@ describe('UserListComponent', () => {
   beforeEach(async () => {
     mockUserService = jasmine.createSpyObj<MockUserService>('MockUserService', ['getUsers', 'deleteUser']);
 
-    // Mock data for getUsers
     const mockUsers: User[] = [
       { id: '2', firstName: 'Jane', lastName: 'Smith', mail: 'jane@gmail.com', role: 'User' }
     ];
     mockUserService.getUsers.and.returnValue(of(mockUsers));
-    // mockUserService.deleteUser.and.returnValue(of());
-
-
 
     await TestBed.configureTestingModule({
       imports: [UserListComponent],
@@ -44,7 +40,6 @@ describe('UserListComponent', () => {
   });
 
   it('should load users on init', () => {
-    // Verify that getUsers was called
     expect(mockUserService.getUsers).toHaveBeenCalled();
     expect(component.users()).toEqual([
       { id: '2', firstName: 'Jane', lastName: 'Smith', mail: 'jane@gmail.com', role: 'User' }
@@ -53,8 +48,9 @@ describe('UserListComponent', () => {
 
 
 
+  /* This test case is testing the functionality of adding a new row in the user list. Here's a
+  breakdown of what the test is doing: */
   it('should add a new row', () => {
-
     const initialLength = component.users()?.length ?? 0;
     component.addRow();
     expect(component.users()?.length).toBe(initialLength + 1);
@@ -67,6 +63,8 @@ describe('UserListComponent', () => {
     });
   });
 
+  /* This test case is testing the functionality of starting the editing mode for a user in the user
+  list. Here's a breakdown of what the test is doing: */
   it('should start editing a user', () => {
     component.users.set([
       { id: '1', firstName: 'Jane', lastName: 'Smith', mail: 'jane@gmail.com', role: 'User' },
@@ -80,6 +78,8 @@ describe('UserListComponent', () => {
     });
   });
 
+  /* This test case is testing the functionality of canceling the editing mode for a user in the user
+  list. Here's a breakdown of what the test is doing: */
   it('should cancel editing a user', () => {
     component.users.set([{ id: '1', firstName: 'Jane', lastName: 'Smith', mail: 'jane@gmail.com', role: 'User' }]);
     component.startEdit('1');
