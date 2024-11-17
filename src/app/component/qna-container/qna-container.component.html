@@ -28,17 +28,9 @@
 </div>
 
 <div class="px-44 absolute w-[100%] bottom-0">
-  <nz-input-group [nzSuffix]="inputIcon">
-    <input [(ngModel)]="userInput"
-      class="h-10 text-5xl"
-      placeholder="Enter Your Question..."
-      (keyup.enter)="askQuestion()"
-      nz-input />
-  </nz-input-group>
+  <input [(ngModel)]="userInput"
+    class="h-10 text-5xl"
+    placeholder="Enter Your Question..."
+    (keyup.enter)="askQuestion()"
+    nz-input />
 </div>
-<ng-template #inputIcon>
-  <span nz-icon
-    class="text-primary"
-    nzType="send"
-    nzTheme="outline"></span>
-</ng-template>
