@@ -82,7 +82,7 @@ export class UserListComponent {
    */
   addRow(): void {
     const id = String(this.users().length + 1)
-    this.users.update(prev => [...(prev ?? []), { id, name: '', role: 'Guest' } as unknown as User])
+    this.users.update(prev => [...(prev ?? []), { id, firstName: '', lastName: '', mail: '', role: 'Guest' } as User])
     this.startEdit(id)
   }
 
